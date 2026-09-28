@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cyber Security</title>
+  <style>
+    :root { --bg:#0b1220; --panel:#111a2b; --text:#dbe4f0; --muted:#8ea0b8; --accent:#2dd4bf; }
+    body { margin:0; font-family:-apple-system,"Segoe UI",Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    .wrap { max-width:720px; margin:0 auto; padding:40px 24px 80px; }
+    h1 { font-size:clamp(28px,6vw,40px); color:var(--accent); margin-bottom:4px; }
+    .subtitle { color:var(--muted); margin-top:0; margin-bottom:32px; }
+    .hero { width:100%; max-height:200px; object-fit:cover; border-radius:12px; margin-bottom:24px; display:block; }
+    h2 { font-size:20px; margin-top:40px; border-bottom:1px solid #22314a; padding-bottom:8px; }
+    ol { padding-left:22px; }
+    li { margin-bottom:8px; }
+    table { width:100%; border-collapse:collapse; margin-top:20px; font-size:14px; }
+    th, td { text-align:left; padding:10px 12px; border-bottom:1px solid #22314a; }
+    th { color:var(--accent); font-size:13px; text-transform:uppercase; }
+    .links { display:flex; gap:16px; flex-wrap:wrap; margin-top:20px; }
+    .btn { display:inline-block; padding:12px 24px; background:var(--accent); color:#04201c; font-weight:600; text-decoration:none; border-radius:8px; }
+    #pw-input { width:100%; padding:12px 14px; border-radius:8px; border:1px solid #22314a; background:var(--panel); color:var(--text); font-size:16px; box-sizing:border-box; }
+    #pw-bar { height:8px; border-radius:4px; background:#22314a; margin-top:12px; overflow:hidden; }
+    #pw-fill { height:100%; width:0%; transition:width .2s ease, background .2s ease; }
+    #pw-label { margin-top:8px; font-weight:600; font-size:14px; }
+    .qr { display:block; width:200px; max-width:100%; border-radius:12px; margin-top:16px; background:#fff; }
+    #term { background:#050a14; border:1px solid #22314a; border-radius:10px; padding:14px; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:14px; }
+    #term-out { max-height:260px; overflow-y:auto; white-space:pre-wrap; word-break:break-word; color:#7cffb2; }
+    #term-line { display:flex; gap:8px; margin-top:8px; }
+    #term-line span { color:var(--accent); white-space:nowrap; }
+    #term-in { flex:1; min-width:0; background:transparent; border:none; outline:none; color:var(--text); font:inherit; font-size:16px; }
+    .chips { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+    .chips button { background:var(--panel); color:var(--accent); border:1px solid #22314a; border-radius:999px; padding:6px 14px; font-family:inherit; font-size:14px; cursor:pointer; }
+    #quiz { background:var(--panel); border:1px solid #22314a; border-radius:10px; padding:16px; }
+    #q-count { color:var(--muted); font-size:13px; }
+    #q-url { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:15px; word-break:break-all; margin:12px 0; padding:12px; background:#050a14; border-radius:8px; }
+    #q-btns { display:flex; gap:12px; }
+    #quiz button { padding:10px 20px; border-radius:8px; border:none; background:var(--accent); color:#04201c; font-weight:600; font-size:15px; cursor:pointer; }
+    #quiz #q-phish { background:#ef4444; color:#fff; }
+    #q-feedback { margin-top:12px; font-size:14px; min-height:1.4em; }
+    #q-next { display:none; margin-top:12px; }
+    #matrix { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; opacity:.25; }
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+
+  <div class="wrap">
+    <h1>Cyber Security</h1>
+    <p class="subtitle">Cyber Security is the protection of computers, networks, and data from unauthorized access, attacks, and damage.
+    Its main goals are to ensure <strong>Confidentiality, Integrity, and Availability (CIA)</strong> of information.
+    It protects against major threats like phishing, malware, ransomware, hacking, and data breaches using tools like
+    firewalls, antivirus, encryption, strong passwords, and multi-factor authentication.</p>
+
+    <img class="hero" src="shahadat-rahman-BfrQnKBulYQ-unsplash.jpg" alt="cyber">
+
+    <h2>Domains in cyber security</h2>
+    <ol type="i">
+      <li>Network Security</li>
+      <li>Application Security</li>
+      <li>Cloud Security</li>
+      <li>Identity and Access Management</li>
+      <li>Endpoint Security</li>
+      <li>Security Operations</li>
+      <li>Offensive Security / Penetration Testing</li>
+      <li>Digital Forensics</li>
+      <li>Governance, Risk and Compliance</li>
+      <li>Cryptography</li>
+      <li>Cloud / IoT / OT Security</li>
+    </ol>
+
+    <h2>Cyber security jobs</h2>
+    <table>
+      <tr>
+        <th>cyber security jobs</th>
+        <th>certification needed</th>
+        <th>salary</th>
+      </tr>
+      <tr>
+        <td>Security analyst</td>
+        <td>compTIA security</td>
+        <td>102,000$</td>
+      </tr>
+      <tr>
+        <td>ethical hackers</td>
+        <td>certified ethical hacker</td>
+        <td>98,000$</td>
+      </tr>
+      <tr>
+        <td>cyber security Architect</td>
+        <td>certified information systems security professional(CISSP)</td>
+        <td>147,000$</td>
+      </tr>
+    </table>
+
+    <h2>Password strength checker</h2>
+    <input type="text" id="pw-input" placeholder="Type a password...">
+    <div id="pw-bar"><div id="pw-fill"></div></div>
+    <div id="pw-label">Enter a password above</div>
+
+    <h2>Hacker terminal</h2>
+    <div id="term">
+      <div id="term-out">Type help to start.</div>
+      <div id="term-line"><span>guest@cyber:~$</span><input id="term-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+    </div>
+    <div class="chips">
+      <button data-cmd="help">help</button>
+      <button data-cmd="scan">scan</button>
+      <button data-cmd="whoami">whoami</button>
+      <button data-cmd="hash hello">hash hello</button>
+    </div>
+
+    <h2>Spot the phish</h2>
+    <div id="quiz">
+      <div id="q-count"></div>
+      <div id="q-url"></div>
+      <div id="q-btns">
+        <button id="q-safe">Safe</button>
+        <button id="q-phish">Phishing</button>
+      </div>
+      <div id="q-feedback"></div>
+      <button id="q-next">Next</button>
+    </div>
+
+    <h2>Message me on WhatsApp</h2>
+    <p>Scan this with the WhatsApp camera to get my contact.</p>
+    <img class="qr" src="whatsapp-qr.png" alt="WhatsApp contact QR code">
+
+    <h2>Learn cyber security from</h2>
+    <div class="links">
+      <a class="btn" href="https://tryhackme.com/" target="_blank" rel="noopener">Try hack me</a>
+      <a class="btn" href="https://www.hackthebox.com/" target="_blank" rel="noopener">Hack the box</a>
+    </div>
+  </div>
+
+  <script>
+    // ----- Matrix background -----
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+    resize();
+    addEventListener('resize', resize);
+
+    const chars = '01\u30a2\u30a4\u30a6\u30a8\u30aa\u30ab\u30ad\u30af$#@%&';
+    const fontSize = 16;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(1);
+
+    function draw() {
+      ctx.fillStyle = 'rgba(11, 18, 32, 0.08)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#2dd4bf';
+      ctx.font = fontSize + 'px monospace';
+      for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+    }
+    setInterval(draw, 50);
+
+    // ----- Password strength checker -----
+    const pwInput = document.getElementById('pw-input');
+    const pwFill = document.getElementById('pw-fill');
+    const pwLabel = document.getElementById('pw-label');
+
+    pwInput.addEventListener('input', () => {
+      const val = pwInput.value;
+      const trimmed = val.trim();
+      let score = 0;
+      if (trimmed.length >= 8) score++;
+      if (trimmed.length >= 12) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9\s]/.test(val)) score++;
+
+      const levels = [
+        { width: '0%',   color: '#8ea0b8', text: 'Enter a password above' },
+        { width: '20%',  color: '#ef4444', text: 'Very weak' },
+        { width: '40%',  color: '#f97316', text: 'Weak' },
+        { width: '60%',  color: '#eab308', text: 'Okay' },
+        { width: '80%',  color: '#84cc16', text: 'Strong' },
+        { width: '100%', color: '#2dd4bf', text: 'Very strong' }
+      ];
+      const level = trimmed.length === 0 ? levels[0] : levels[Math.max(score, 1)];
+      pwFill.style.width = level.width;
+      pwFill.style.background = level.color;
+      pwLabel.textContent = level.text;
+      pwLabel.style.color = level.color;
+    });
+
+    // ----- Hacker terminal (all simulated, nothing real is scanned) -----
+    const termOut = document.getElementById('term-out');
+    const termIn = document.getElementById('term-in');
+    let busy = false;
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+    function print(text) {
+      const line = document.createElement('div');
+      line.textContent = text;
+      termOut.appendChild(line);
+      termOut.scrollTop = termOut.scrollHeight;
+    }
+
+    async function sha256(text) {
+      const bytes = new TextEncoder().encode(text);
+      const buf = await crypto.subtle.digest('SHA-256', bytes);
+      return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function run(input) {
+      const [cmd, ...rest] = input.trim().split(/\s+/);
+      const arg = rest.join(' ');
+      print('guest@cyber:~$ ' + input);
+      if (!cmd) return;
+      if (cmd === 'help') {
+        print('Commands: help, whoami, scan, hash <text>, clear');
+      } else if (cmd === 'whoami') {
+        print('guest (learning cyber security)');
+      } else if (cmd === 'scan') {
+        print('Scanning 192.168.1.10 (simulated)...');
+        for (const l of ['22/tcp    open    ssh', '80/tcp    open    http', '443/tcp   open    https', '3306/tcp  closed  mysql']) {
+          await sleep(500);
+          print(l);
+        }
+        await sleep(500);
+        print('Done. Demo only, nothing real was scanned.');
+      } else if (cmd === 'hash') {
+        if (!arg) print('Usage: hash <text>');
+        else if (!window.crypto || !crypto.subtle) print('Hashing is not available here.');
+        else print('SHA-256: ' + await sha256(arg));
+      } else if (cmd === 'clear') {
+        termOut.textContent = '';
+      } else {
+        print(cmd + ': command not found. Type help.');
+      }
+    }
+
+    async function submit(text) {
+      if (busy) return;
+      busy = true;
+      await run(text);
+      busy = false;
+    }
+
+    termIn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        const t = termIn.value;
+        termIn.value = '';
+        submit(t);
+      }
+    });
+    document.querySelectorAll('.chips button').forEach(b =>
+      b.addEventListener('click', () => submit(b.dataset.cmd)));
+
+    // ----- Phishing quiz -----
+    const quiz = [
+      { url: 'https://www.paypal.com/signin', phish: false, why: 'The real domain is paypal.com, the part right before the first single slash.' },
+      { url: 'https://paypa1.com/signin', phish: true, why: 'Look closely: paypa1 uses the number 1 instead of the letter l.' },
+      { url: 'https://accounts.google.com', phish: false, why: 'accounts is just a subdomain of the real domain google.com.' },
+      { url: 'https://google.com.account-verify.top/login', phish: true, why: 'The real domain is account-verify.top, the part before the first single slash. google.com is only a subdomain. The https lock does not make a site safe.' },
+      { url: 'http://free-gift-cards.xyz/claim', phish: true, why: 'Unknown domain, too good to be true, and no HTTPS.' },
+      { url: 'https://github.com/login', phish: false, why: 'Real domain github.com, served over HTTPS.' }
+    ];
+    let qi = 0, qScore = 0, answered = false;
+    const $ = id => document.getElementById(id);
+    quiz.sort(() => Math.random() - 0.5);
+
+    function showQuestion() {
+      $('q-count').textContent = 'Question ' + (qi + 1) + ' of ' + quiz.length;
+      $('q-url').textContent = quiz[qi].url;
+      $('q-feedback').textContent = '';
+      $('q-next').style.display = 'none';
+      $('q-btns').style.display = 'flex';
+      answered = false;
+    }
+
+    function answer(saysPhish) {
+      if (answered) return;
+      answered = true;
+      const right = saysPhish === quiz[qi].phish;
+      if (right) qScore++;
+      $('q-feedback').style.color = right ? '#2dd4bf' : '#ef4444';
+      $('q-feedback').textContent = (right ? 'Correct. ' : 'Not quite. ') + quiz[qi].why;
+      $('q-next').textContent = qi === quiz.length - 1 ? 'See score' : 'Next';
+      $('q-next').style.display = 'inline-block';
+    }
+
+    function showResult() {
+      $('q-count').textContent = 'Finished';
+      $('q-url').textContent = 'You scored ' + qScore + ' out of ' + quiz.length;
+      $('q-feedback').textContent = '';
+      $('q-btns').style.display = 'none';
+      $('q-next').textContent = 'Play again';
+      $('q-next').style.display = 'inline-block';
+    }
+
+    $('q-safe').addEventListener('click', () => answer(false));
+    $('q-phish').addEventListener('click', () => answer(true));
+    $('q-next').addEventListener('click', () => {
+      if (qi >= quiz.length) {
+        qi = 0;
+        qScore = 0;
+        quiz.sort(() => Math.random() - 0.5);
+        showQuestion();
+        return;
+      }
+      qi++;
+      if (qi < quiz.length) showQuestion();
+      else showResult();
+    });
+    showQuestion();
+  </script>
+</body>
+</html>
